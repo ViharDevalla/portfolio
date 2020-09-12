@@ -31,7 +31,7 @@
 
 .right{
   right: 0;
-  background-color:#2f3238;
+  background-color:#1a1a1a;
 }
 
 .sidetext{
@@ -78,13 +78,10 @@
 .image{
   display: inline-block;
   margin-bottom: 50px;
-  -webkit-box-shadow: 3px 3px 5px 6px rgb(32, 31, 31);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    3px 3px 5px 6px rgb(32, 31, 31);  /* Firefox 3.5 - 3.6 */
-  box-shadow:         3px 3px 5px 6px rgb(32, 31, 31);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 img{
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
 }
 
