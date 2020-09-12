@@ -1,15 +1,17 @@
-import React from 'react'
-import Card from '@material-ui/core/Card';
+import React from 'react';
+import image from './profile.jpg';
+import Profile from './Profile.js';
 import './style.css'
-import { CardContent } from '@material-ui/core';
+
 function Content() {
     return (
-        <div className='splitright right goodfont'>
-            <Card variant='outlined' >
-               <CardContent>
-                   Hello there
-               </CardContent>
-            </Card>
+        <div className='splitright right clearfix'>
+            <div className="content">
+                <div className='image'>
+                    <img src={image} loading='lazy'></img>
+                </div>
+                <Profile />
+            </div>
         </div>
     )
 }

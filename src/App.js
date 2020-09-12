@@ -4,7 +4,7 @@ import Content from './Content';
 import Sidebar from './Sidebar.js';
 function App() {
   return (
-    <div className="main">
+    <div className="main clearfix">
       <Sidebar />
       <Content />
     </div>

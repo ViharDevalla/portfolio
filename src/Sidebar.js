@@ -5,23 +5,21 @@ function Sidebar() {
     const [count, setCount] = useState(1);
 
   useEffect(() => {
-    // document.title = `You clicked ${count} times`;
-    console.log("Count: " + count);
     setCount(1);
   }, [count]);
 
     return (
-        <div className="splitleft left">
+        <div className="splitleft left clearfix">
             <div className="sidetext">
                 VIHAR DEVALLA
             </div>
             <Typist className="type" key={count} cursor={{show:false}} avgTypingDelay={50} onTypingDone={() => setCount(0)}>
                 <span >DATA SCIENTIST</span>
-                <Typist.Backspace count={50} delay={3500} />
+                <Typist.Backspace count={50} delay={3000} />
                 <span >SECURITY RESEARCHER</span>
-                <Typist.Backspace count={50} delay={3500} />
+                <Typist.Backspace count={50} delay={3000} />
                 <span >WEB DEVELOPER</span>
-                <Typist.Backspace count={50} delay={3500} />
+                <Typist.Backspace count={50} delay={3000} />
             </Typist>
         </div>
     )
