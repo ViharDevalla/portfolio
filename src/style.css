@@ -49,8 +49,13 @@
   font-size: large;
   color: white;
   text-align: right;
+  margin-top: 0;
+  margin-bottom: 0;
   padding-right: 20px;
   padding-left: 20px;
+}
+.typer{
+  height : 10px
 }
 
 .titlefont{
@@ -81,8 +86,23 @@
 }
 
 img{
-  max-width: 80%;
+  max-width: 70%;
   height: auto;
+}
+a:link{
+  color:inherit;
+}
+a:visited{
+  color:inherit;
+}
+a:hover{
+  color:inherit;
+}
+a:focus{
+  color:inherit;
+}
+a:active{
+  color:inherit;
 }
 
 .box{
@@ -98,7 +118,11 @@ img{
   box-shadow:         0px 2px 3px 3px rgb(32, 31, 31);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 
 }
-
+.icons{
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 @media only screen and (max-width: 880px) {
   .splitleft {
     opacity: 0.8;
@@ -122,8 +146,10 @@ img{
   }
   
   .type{
-    font-family: 'Monda', sans-serif;
-  font-size: large;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: 'Monda', sans-serif;
+  font-size: small;
   color: white;
   text-align: center;
   padding-right: 20px;
@@ -141,6 +167,10 @@ img{
     height: auto;
 
   }
-
+  .icons{
+    margin-top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
