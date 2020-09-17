@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { FaGithubSquare,FaInstagram,FaLinkedin }  from 'react-icons/fa';
+import { FaUserAlt,FaRegLightbulb,FaCertificate}  from 'react-icons/fa';
+import { MdAssignmentInd , MdAssignment }  from 'react-icons/md';
+import {TiContacts} from 'react-icons/ti'
 import Typist from 'react-typist';
 import './style.css'
 function Sidebar() {
@@ -12,7 +14,7 @@ function Sidebar() {
     return (
         <div className="splitleft left clearfix">
             <div className="sidetext">
-                VIHAR DEVALLA 
+                VIHAR DEVALLA
             </div>
             
 
@@ -25,11 +27,17 @@ function Sidebar() {
                 <span >WEB DEVELOPER</span>
                 <Typist.Backspace count={50} delay={3000} />
             </Typist>
-            </div><br></br>
-            <div className = "sidetext icons">
-                <a href="https://github.com/ViharDevalla">< FaGithubSquare className="icons"/></a>
-                <a href="https://www.linkedin.com/in/vihar-devalla-3499881a3/"><FaLinkedin /></a>
-                <a href="https://www.instagram.com/vihar.devalla.007/">< FaInstagram className="icons"/></a>
+            </div><br></br><br></br>
+ 
+            <div className = "sidetext icons item">
+                <a href="#profile"> < MdAssignmentInd className="icons icon1"/></a>
+
+                <a href="#skills"><FaRegLightbulb className="icons"/></a>
+
+                <a href="#projects">< MdAssignment className="icons"/></a>
+                <a href="#achieve">< FaCertificate className="icons"/></a>
+
+                <a href="#contact">< TiContacts className="icons"/></a>
             </div>
         </div>
     )

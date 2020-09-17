@@ -1,7 +1,11 @@
 import React from 'react';
-import image from './profile.jpg';
+import image from './img/profile.jpg';
 import Profile from './Profile.js';
-import './style.css'
+import Skills from './Skills.js';
+import Projects from './Projects.js';
+import Achieve from './Achieve.js';
+import './style.css';
+import Contact from './Contact.js';
 
 function Content() {
     return (
@@ -11,6 +15,10 @@ function Content() {
                     <img src={image} loading='lazy'></img>
                 </div>
                 <Profile />
+                <Skills />
+                <Projects />
+                <Achieve />
+                <Contact />
             </div>
         </div>
     )
