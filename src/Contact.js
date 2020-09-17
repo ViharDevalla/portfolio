@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 function Contact() {
     const classes = useStyles();
     return (
+        <div>
         <div className="box" id="contact">
             <div className="titlefont">
                 CONTACT
@@ -32,7 +33,12 @@ function Contact() {
             <div className="subfont">
                 Feel Free to contact me about anything :)<br></br> 
                 Discord ID : VikedJoker#7297
-            </div><br></br>
+            </div>
+        </div>
+        <div className="box" id="contact">
+            <div className="titlefont">
+                CONTACT FORM
+            </div>
             <div>
             <form action="https://formsubmit.co/vihardevalla@gmail.com" method="POST">
                 <div className="subfont">
@@ -48,6 +54,7 @@ function Contact() {
             </form>
             </div>
             
+        </div>
         </div>
     )
 }
