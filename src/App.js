@@ -7,6 +7,7 @@ import {Helmet} from "react-helmet";
 
 
 function App() {
+  
   ReactGA.initialize('UA-178424993-1');
   ReactGA.pageview(window.location.pathname + window.location.search);
   return (
