@@ -1,10 +1,10 @@
 import React from 'react'
 import './style.css';
-import githubic from './img/github.png'
+import githubic from './img/github.webp'
 import {Button} from '@material-ui/core/';
 import { makeStyles } from '@material-ui/core/styles';
-import instaic from './img/insta.png' 
-import linkedinic from './img/linkedin.png'
+import instaic from './img/insta.webp' 
+import linkedinic from './img/linkedin.webp'
 
 const useStyles = makeStyles((theme) => ({
     root: {

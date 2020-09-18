@@ -1,17 +1,17 @@
 import React from 'react';
 import './style.css';
 
-import ethicalhack from './img/hacker.png';
-import appsec from './img/protection.png';
-import ctf from './img/ctftime.png'
-import ml from "./img/ml.png"
-import python from './img/python.png';
-import ReactJS from './img/react.png';
-import c from './img/c.png';
-import gcp from './img/gcp.png';
-import firebase from './img/firebase.png';
-import nextjs from './img/nextjs.png';
-import tensor from './img/tensor.png';
+import ethicalhack from './img/hacker.webp';
+import appsec from './img/protection.webp';
+import ctf from './img/ctftime.webp'
+import ml from "./img/ml.webp"
+import python from './img/python.webp';
+import ReactJS from './img/react.webp';
+import c from './img/c.webp';
+import gcp from './img/gcp.webp';
+import firebase from './img/firebase.webp';
+import nextjs from './img/nextjs.webp';
+import tensor from './img/tensor.webp';
 import colab from './img/colab.png';
 
 
