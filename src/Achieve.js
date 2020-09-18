@@ -284,7 +284,7 @@ function Achieve() {
                             </Typography>
                         </CardContent>
                         <CardActions>
-                                <Button size="small" color="primary" align="center" href="https://ctftime.org/team/123643">
+                                <Button size="small" color="primary" align="center" href="https://bsidesbangalore.in/">
                                     Read More
                                 </Button>
                                 <Popup trigger={<Button className="button"> Open Image </Button>} modal nested >

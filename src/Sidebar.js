@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { FaUserAlt,FaRegLightbulb,FaCertificate}  from 'react-icons/fa';
+import { FaUserAlt,FaRegLightbulb,FaAward}  from 'react-icons/fa';
 import { MdAssignmentInd , MdAssignment }  from 'react-icons/md';
+import {BsGearFill} from 'react-icons/bs'
 import {TiContacts} from 'react-icons/ti'
 import Typist from 'react-typist';
 import './style.css'
@@ -32,10 +33,10 @@ function Sidebar() {
             <div className = "sidetext icons item">
                 <a href="#profile"> < MdAssignmentInd className="icons icon1"/></a>
 
-                <a href="#skills"><FaRegLightbulb className="icons"/></a>
+                <a href="#skills"><BsGearFill className="icons"/></a>
 
                 <a href="#projects">< MdAssignment className="icons"/></a>
-                <a href="#achieve">< FaCertificate className="icons"/></a>
+                <a href="#achieve">< FaAward className="icons"/></a>
 
                 <a href="#contact">< TiContacts className="icons"/></a>
             </div>
