@@ -28,6 +28,30 @@ export default function Home() {
         <meta name="twitter:title" content="Vihar Devalla — SRE II" />
         <meta name="twitter:description" content="SRE II at Arcesium. CKA + CKS certified. Kubernetes, observability, platform engineering." />
         <meta name="twitter:image" content="https://vihar.vercel.app/img/vd.jpg" />
+        <link rel="canonical" href="https://vihar.vercel.app/" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Vihar Devalla',
+              jobTitle: 'SRE II',
+              worksFor: {
+                '@type': 'Organization',
+                name: 'Arcesium',
+              },
+              url: 'https://vihar.vercel.app/',
+              image: 'https://vihar.vercel.app/img/vd.jpg',
+              sameAs: [
+                'https://www.linkedin.com/in/vihardevalla/',
+                'https://github.com/ViharDevalla',
+              ],
+              knowsAbout: ['Kubernetes', 'Site Reliability Engineering', 'Observability', 'Platform Engineering', 'Cloud Security'],
+            }),
+          }}
+        />
       </Head>
 
       <Navbar />

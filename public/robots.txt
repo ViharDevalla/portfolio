@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vihar.vercel.app/sitemap.xml

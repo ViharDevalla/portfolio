@@ -30,6 +30,10 @@ export default function Hero() {
 
           {/* Left: Terminal */}
           <div className="md:w-3/5 order-2 md:order-1">
+            <h1 className="font-mono text-2xl md:text-3xl font-bold text-white mb-3">
+              Vihar Devalla
+            </h1>
+
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <StatusBadge status="OPERATIONAL" />
               <span className="font-mono text-xs text-sre-amber">
