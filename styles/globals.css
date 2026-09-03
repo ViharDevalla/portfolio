@@ -2,15 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica+SC&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
 
+:root {
+  --sre-bg:       #0a0e0f;
+  --sre-surface:  #0f1419;
+  --sre-surface2: #161d24;
+  --sre-border:   #1e2d2f;
+  --sre-green:    #00ff88;
+  --sre-cyan:     #00d4ff;
+  --sre-amber:    #f5a623;
+  --sre-danger:   #ff4444;
+  --sre-muted:    #8a97a8;
+}
 
-html,
-body {
+html, body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--sre-bg);
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -22,50 +34,57 @@ a {
   box-sizing: border-box;
 }
 
-.module-border-wrap {
-  max-width: 250px;
-  padding: 1rem;
-  position: relative;
-  background: linear-gradient(to right, red, purple);
-  padding: 3px;
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--sre-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sre-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sre-green);
 }
 
-.font1{
-  font-family: 'Josefin Slab', serif;
+/* Terminal cursor blink */
+.cursor-blink::after {
+  content: '▋';
+  color: var(--sre-green);
+  animation: blink 1s step-end infinite;
 }
 
-.font2{
-  font-family: 'Major Mono Display';
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
-.font3{
-  font-family: 'IM Fell Double Pica SC', serif;
+/* Hex clip-path for profile image */
+.hex-clip {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
-.inner{
-  visibility: hidden;
-  transition: all 0.2s ease;
- 
+/* Section prompt prefix */
+.section-prompt::before {
+  content: '>_ ';
+  color: var(--sre-amber);
+  font-family: 'JetBrains Mono', monospace;
 }
 
-.outer:hover .inner{
-  visibility: visible;
-  transform: translateY(40%);
-  transition: all 0.2s ease;
+/* Topology SVG background */
+.topology-bg {
+  background-image: radial-gradient(circle, #1e2d2f 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.react-logo{
-  display: inline-block;
-
-  animation-name:rotate;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-
-}
-@keyframes rotate{
-
-  100%{
-    transform:rotate(360deg);
-  }
+/* ASCII divider */
+.ascii-divider {
+  color: var(--sre-border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+  white-space: nowrap;
 }

@@ -1,73 +1,90 @@
-import React from 'react'
-import Image from 'next/image'
+import StatusBadge from './ui/StatusBadge';
 
+const PILLARS = [
+  {
+    id: 'container_orchestration',
+    label: 'Container Orchestration',
+    icon: '⎈',
+    skills: [
+      'Kubernetes (CKA + CKS certified)',
+      'Docker / Linux Containers',
+      'Helm',
+      'GitOps / ArgoCD',
+      'K8s API / Operators',
+    ],
+  },
+  {
+    id: 'observability',
+    label: 'Observability',
+    icon: '◉',
+    skills: [
+      'Datadog',
+      'Grafana',
+      'ELK Stack',
+      'SLO / SLI / Error Budgets',
+      'Signoz',
+    ],
+  },
+  {
+    id: 'platform_cloud',
+    label: 'Platform & Cloud',
+    icon: '◼',
+    skills: [
+      'AWS',
+      'GCP',
+      'Terraform / IaC',
+      'CI/CD Pipelines',
+      'Linux Systems',
+    ],
+  },
+  {
+    id: 'engineering',
+    label: 'Engineering',
+    icon: '⚙',
+    skills: [
+      'Go',
+      'Python',
+      'JavaScript',
+      'PostgreSQL / MongoDB',
+      'Bash / Automation',
+    ],
+  },
+];
 
+export default function Skills() {
+  return (
+    <section id="skills" className="py-20 max-w-6xl mx-auto px-6 md:px-16">
+      <div className="mb-12">
+        <p className="font-mono text-sre-amber text-sm mb-2">
+          vihar@tool-shed:~$ kubectl describe skills --output=wide
+        </p>
+        <h2 className="font-mono text-3xl font-bold text-white section-prompt">skills</h2>
+        <div className="ascii-divider mt-4">{'═'.repeat(80)}</div>
+      </div>
 
-const Skills = () => {
-
-    const skills = [
-        {name:'JavaScript', src:'/icons/js.svg'},
-        {name:'Python', src:'/icons/python.svg'},
-        {name:'C', src:'/icons/c.svg'},
-        {name:'React', src:'/icons/react.svg',react:true},
-        {name:'NextJS', src:'/icons/nextjs.svg'},
-
-        {name:'Tailwind CSS', src:'/icons/tailwind.svg'},
-        {name:'Firebase', src:'/icons/firebase.svg'},
-        {name:'MongoDB', src:'/icons/mongo.svg'},
-        {name:'Google Cloud', src:'/icons/gcp.svg'},
-        {name:'AWS', src:'/icons/aws.svg'},
-
-        {name:'Docker', src:'/icons/docker.svg'},
-
-        {name:'Bash', src:'/icons/bash.svg'},
-        {name:'Metasploit', src:'/icons/metasploit.svg'},
-        {name:'Burp Suite', src:'/icons/burp.png'},
-
-        {name:'Kubernetes', src:'/icons/k8.svg'},
-        {name:'Hack The Box', src:'/icons/htb.svg'},
-        
-        {name:'Tensorflow', src:'/icons/tensorflow.svg'},
-        {name:'Keras', src:'/icons/keras.svg'},
-
-        {name:'Raspberry Pi', src:'/icons/rpi.svg'},
-        {name:'Arduino', src:'/icons/arduino.svg'},
-
-        
-    ]
-
-    return (
-        <div className="text-white py-2 md:py-10">
-            <h1 className="text-4xl font-bold">Skills</h1>
-            <div className="md:flex"> 
-                <div className="hidden md:block w-1/2 p-24 border-r-2 font-semibold border-gray-600">
-                    <h1 className="text-lg py-1">Deployment - Docker and Kubernetes</h1>
-                    <h1 className="text-lg py-1">Automation</h1>
-                    <h1 className="text-lg py-1">Web Development</h1>
-                    <h1 className="text-lg py-1">Cyber Security</h1>
-                    <h1 className="text-lg py-1">AI/ML and IoT</h1>
-                </div>
-                <div className="md:w-1/2 md:px-10 grid grid-cols-5 lg:grid-cols-5">
-                    {skills.map((skill) => {
-                        return <SkillCard key={skill.name} name={skill.name} src={skill.src} react={skill.react} />
-                    })}
-                </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {PILLARS.map((pillar) => (
+          <div key={pillar.id} className="bg-sre-surface border border-sre-border rounded-lg overflow-hidden hover:border-sre-border/80 transition-colors">
+            <div className="flex items-center justify-between px-4 py-3 bg-sre-surface2 border-b border-sre-border">
+              <div className="flex items-center gap-2">
+                <span className="text-sre-amber font-mono">{pillar.icon}</span>
+                <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">
+                  {pillar.label}
+                </span>
+              </div>
+              <StatusBadge status="OPERATIONAL" size="xs" />
             </div>
 
-        </div>
-    )
-}
-
-const SkillCard = (props) => {
-    return (
-        <div className="pt-5 flex flex-col w-8 md:w-24 items-center text-xs outer text-white ">
-            <div className={props.react?"react-logo":"block"}>
-                <Image src={props.src} alt="JavaScript" width={60} height={60} />
+            <div className="p-4 flex flex-wrap gap-2">
+              {pillar.skills.map((skill) => (
+                <span key={skill} className="font-mono text-xs px-2 py-1 rounded border border-sre-border text-gray-300 bg-sre-surface2 hover:border-sre-green/40 hover:text-sre-green transition-colors">
+                  {skill}
+                </span>
+              ))}
             </div>
-                
-                <h5 className="inner font-thin">{props.name}</h5>
-        </div>
-    )
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
-
-export default Skills

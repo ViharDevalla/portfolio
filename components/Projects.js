@@ -1,169 +1,124 @@
-/* eslint-disable react/no-unknown-property */
-import React from 'react'
-import Image from 'next/image'
-const Projects = () => {
+const PROJECTS = [
+  {
+    id: 'reliability-risk-audit',
+    name: 'Reliability Risk Audit Scoring System',
+    subtitle: 'Firm-Wide Platform Engineering',
+    desc: 'Template-based framework in Go that pulls risk auditing metrics from various sources across the firm. Includes a web dashboard to visualize data. Used firm-wide to approve and gate new releases, and to help application teams adopt reliability as part of the SDLC cycle.',
+    tags: ['Go', 'Kubernetes', 'Grafana', 'Web Dashboard', 'SLO'],
+    impact: 'Gates all firm-wide releases',
+    status: 'production',
+    github: null,
+    link: null,
+  },
+  {
+    id: 'k8s-slack-debugger',
+    name: 'Kubernetes Debugging Tool for Slack',
+    subtitle: 'Developer Productivity',
+    desc: 'Slack bot using the Slack-Bolt Framework that retrieves Kubernetes resource health and surfaces logs, metrics, and network paths directly via Slack. Enables faster diagnostics without kubectl access, improving developer productivity and incident response speed.',
+    tags: ['Python', 'Slack-Bolt', 'Kubernetes API', 'K8s', 'DevEx'],
+    impact: 'Faster diagnostics for 100+ devs',
+    status: 'production',
+    github: null,
+    link: null,
+  },
+  {
+    id: 'mfa-portal',
+    name: 'Multi-Factor Authentication Portal (IAM)',
+    subtitle: 'Security & Identity',
+    desc: 'Secure, scalable MFA self-service portal using Ping Identity APIs and clustered deployments to manage enterprise MFA device workflows. Built for high-availability with zero trust principles.',
+    tags: ['Ping Identity', 'IAM', 'MFA', 'Security', 'Clustered Deployment'],
+    impact: 'Enterprise-grade MFA self-service',
+    status: 'production',
+    github: null,
+    link: null,
+  },
+  {
+    id: 'signoz-hackathon',
+    name: 'Unified Observability Platform — Signoz',
+    subtitle: 'Arcesium Season of Code 2024 🏆',
+    desc: 'Won the Arcesium Season of Code Hackathon 2024 by building a platform integration for Signoz — bringing metrics, logs, traces, and events into one singular place. Demonstrated the value of unified observability vs. fragmented tooling.',
+    tags: ['Signoz', 'OpenTelemetry', 'Metrics', 'Logs', 'Traces', 'Go'],
+    impact: '1st place — internal hackathon',
+    status: 'award',
+    github: null,
+    link: null,
+  },
+];
 
-    const projectList = [
-        {
-            name: "Research Paper on Raga Classification",
-            subtitle:"First Research Paper",
-            desc: "Presented a paper at NIT Silchar FRSM 2020 Conference, involved in research on Indian Classical Music classification based on Raga using ML and Deep Learning models. The paper was published under AISC, Springer (June 2021)",
-            image_url:"/projects/research.jpg",
-            tags: ["Python", "Machine Learning", "Deep Learning", "Research"],
-            link: "https://link.springer.com/chapter/10.1007/978-981-33-6881-1_18",
-            github: false,
-            left:true
-        },
-        {
-            name: "Cloud Security Alliance Bangalore Chapter Website",
-            subtitle:"Volunteering Project",
-            image_url:"/projects/csa_website.jpg",
-            desc: "Developed the website for CSA Bangalore Chapter, a non-profit organization that promotes the use of best practices for providing security assurance within Cloud Computing, and provides education on the uses of Cloud Computing to help secure all other forms of computing.",
-            tags: ["React", "Next.js", "Tailwind CSS", "Firebase"],
-            link: "https://csabangalorechapter.com/",
-            github: false,
-            left:false
-        },
-        {
-            name: "Research Paper on Malicious URLs and Injection Attacks",
-            subtitle:"Research Paper - Cyber Security",
-            image_url:"/projects/murli.jpg",
-            desc: "Written a research paper on Detection of Malicious URLs and Injection Attacks using Machine Learning and Deep Learning models. The paper was published under Procedia Computer Science, Elsevier at the 4th International Conference on Innovative Data Communication Technology and Application",
-            tags: ["Python", "Cyber Security","SQL","Deep Learning", "Research"],
-            link: "https://www.sciencedirect.com/journal/procedia-computer-science/vol/215/suppl/C",
-            github: false,
-            left:true
-        }
-    ]
+const STATUS_STYLE = {
+  production: { label: 'production',  cls: 'text-sre-green border-sre-green/40' },
+  award:      { label: '🏆 award',    cls: 'text-sre-amber border-sre-amber/40' },
+  'open-source': { label: 'open-source', cls: 'text-sre-cyan border-sre-cyan/40' },
+};
 
+export default function Projects() {
+  return (
+    <section id="projects" className="py-20 max-w-6xl mx-auto px-6 md:px-16">
+      <div className="mb-12">
+        <p className="font-mono text-sre-amber text-sm mb-2">
+          vihar@side-effects:~$ ls -la projects/ --show-hidden-impact
+        </p>
+        <h2 className="font-mono text-3xl font-bold text-white section-prompt">projects</h2>
+        <div className="ascii-divider mt-4">{'═'.repeat(80)}</div>
+      </div>
 
-    return (
-        <div id="project" className="text-white py-2 md:py-10">
-            <h1 className="text-4xl font-bold py-5">Projects</h1>
-            {
-                projectList.map((project) => {
-                    return (
-                        project.left 
-                        ? 
-                        <LeftCard 
-                        key={project} name={project.name} desc={project.desc} 
-                        tags={project.tags} link={project.link} github={project.github}
-                        image_url={project.image_url} subtitle={project.subtitle}
-                        />
-                        :
-                        <RightCard 
-                        key={project} name={project.name} desc={project.desc} 
-                        tags={project.tags} link={project.link} github={project.github}
-                        image_url={project.image_url} subtitle={project.subtitle}
-                        />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        {PROJECTS.map((project) => {
+          const st = STATUS_STYLE[project.status] || STATUS_STYLE.production;
+          return (
+            <div key={project.id} className="bg-sre-surface border border-sre-border rounded-lg overflow-hidden hover:border-sre-muted/40 transition-colors flex flex-col">
+              <div className="flex items-center justify-between px-4 py-3 bg-sre-surface2 border-b border-sre-border">
+                <span className="font-mono text-xs text-sre-muted">{project.subtitle}</span>
+                <span className={`font-mono text-xs px-2 py-0.5 rounded border ${st.cls}`}>
+                  {st.label}
+                </span>
+              </div>
 
-                    )
-                })
-            }
-            <div className="flex  w-full">
-                <a href="https://github.com/ViharDevalla" target="_blank" rel="noopener noreferrer" className="mx-auto border text-indigo-500 font-semibold border-indigo-500 rounded-xl px-3 py-1 hover:bg-gray-800">Check out my other projects at GitHub</a>
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className="font-mono text-base font-bold text-white mb-3">{project.name}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">{project.desc}</p>
+
+                <div className="font-mono text-xs text-sre-green mb-4">
+                  impact: {project.impact}
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="font-mono text-xs px-2 py-0.5 rounded border border-sre-border text-sre-muted bg-sre-surface2">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-3">
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer"
+                      className="font-mono text-xs text-sre-cyan hover:text-sre-green transition-colors">
+                      → github
+                    </a>
+                  )}
+                  {project.link && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer"
+                      className="font-mono text-xs text-sre-cyan hover:text-sre-green transition-colors">
+                      → link
+                    </a>
+                  )}
+                  {!project.github && !project.link && (
+                    <span className="font-mono text-xs text-sre-muted">internal / proprietary</span>
+                  )}
+                </div>
+              </div>
             </div>
-            
-        </div>
-    )
+          );
+        })}
+      </div>
+
+      <div className="text-center">
+        <a href="https://github.com/ViharDevalla" target="_blank" rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 font-mono text-sm px-4 py-2 rounded border border-sre-cyan/40 text-sre-cyan hover:border-sre-cyan hover:bg-sre-surface2 transition-colors">
+          <span>→</span> more on github
+        </a>
+      </div>
+    </section>
+  );
 }
-
-const LeftCard = ({name,subtitle,desc,image_url,tags,link,github}) =>{
-    return(
-        <div className="grid md:grid-cols-10 pb-24">
-            <div className="rounded-xl md:row-span-full md:col-start-1 md:col-span-6 md:self-center ">
-                <a href={link} target="_blank" rel="noreferrer" className='transition-opacity duration-300 ease-linear opacity-50 hover:opacity-90'>
-                    <Image className="rounded-xl" src={image_url?image_url:'/img/logo.png'}  layout="responsive" height={462} width={922} objectFit='cover' alt="Vihar Devalla Picture"/>
-                </a>
-                
-            </div>
-            <div className="md:row-span-full md:col-span-5 md:col-end-11 self-center  rounded-xl text-right my-auto z-10">
-                <h1 className="pt-5 md:pt-0 text-xs md:text-lg font-mono">{subtitle}</h1>
-                <h1 className="text-lg md:text-2xl py-2 font-bold">{name}</h1>
-                <div className="w-full md:w-54 bg-gray-800 rounded-xl p-5 px-5 text-sm font-semibold">
-                    {desc}
-                </div>
-                <ul className="flex flex-row gap-2 flex-wrap md:flex-row-reverse  py-2  text-gray-300">
-                    {
-                        tags &&
-                        tags.map((tag) => {
-                            return (
-                                <li key={tag} className="px-3 py-1 bg-gray-700 rounded-xl">{tag}</li>
-                            )
-                        })
-                    }
-                </ul>
-                <div className="flex flex-row-reverse ">
-                    {
-                        github &&
-                        <a className="w-5 py-2 text-gray-500 transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-indigo-500 duration-100" href={github}>
-                            <svg  xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-
-                    }
-
-                    {
-                        link &&
-                        <a className=" w-5 py-2 text-gray-500 transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-indigo-500 duration-100" href={link}>
-                            <svg fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z"/></svg>
-                        </a>
-                    }
-                    
-                </div>
-                
-            </div>
-        </div>
-    )
-}
-
-const RightCard = ({name,subtitle="",desc,image_url,tags,link,github}) =>{
-    return(
-        <div className="grid md:grid-cols-10 pb-24">
-            <div className="md:row-span-full md:col-span-5 md:col-end-6 self-center  rounded-xl text-left my-auto z-10">
-                <h1 className="text-xs md:text-lg font-mono">{subtitle}</h1>
-                <h1 className="text-lg md:text-2xl py-1 font-bold">{name}</h1>
-                <div className="md:w-54 bg-gray-800 rounded-xl p-5 px-5 text-sm font-semibold">
-                    {desc}
-                </div>
-                <ul className="flex flex-row gap-2 flex-wrap md:flex-row-reverse  py-2  text-gray-300">
-                    {
-                        tags &&
-                        tags.map((tag) => {
-                            return (
-                                <li key={tag} className="px-3 py-1 bg-gray-700 rounded-xl mx-1">{tag}</li>
-                            )
-                        })
-                    }
-                </ul>
-                <div className="flex ">
-                    {
-                        github &&
-                        <a className="w-5 py-2 mr-2 text-gray-500 transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-indigo-500 duration-100" href={github}>
-                        <svg  xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                    }
-                    
-                    {
-                        link &&    
-                        <a className=" w-5 py-2 text-gray-500 transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-indigo-500 duration-100" href={link}>
-                            <svg fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z"/></svg>
-                        </a>
-                    }
-                </div>
-                
-            </div>
-
-
-            <div className="rounded-xl md:row-span-full md:col-start-5 md:col-span-6 self-center ">
-                <a href={link} target="_blank" rel="noreferrer" className='transition-opacity duration-300 ease-linear opacity-50 hover:opacity-90'>
-                    <Image className="rounded-xl" src={image_url?image_url:'/img/logo.png'}  layout="responsive" height={462} width={922} objectFit='cover' alt="Vihar Devalla Picture"/>
-                </a>
-                
-            </div>
-
-
-        </div>
-    )
-}
-
-export default Projects
