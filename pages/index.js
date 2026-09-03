@@ -19,6 +19,7 @@ export default function Home() {
         <meta name="description" content="Vihar Devalla — SRE II at Arcesium. CKA + CKS certified. Kubernetes, observability, platform engineering." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="google-site-verification" content="kar9ghuvj0MNC5pufN064nDuwPcVlBLXl0jVkBHoH4o" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Vihar Devalla — SRE II" />
